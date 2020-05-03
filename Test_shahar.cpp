@@ -69,10 +69,7 @@ TEST_CASE("test 2"){
 TEST_CASE("CHECK_THROWS"){
     RealVariable x;
     CHECK_THROWS(solve((x^2)==-100));
-    CHECK_THROWS(solve(((x^5)+3*x+5)==20));
     CHECK_THROWS( solve((x^2)==-16));
-    CHECK_THROWS( solve((x^4)==-16));
-    CHECK_THROWS( solve((x^4)==16));
     CHECK_THROWS( solve((x^2)==-1));
     CHECK_THROWS( solve(2*(x^2)==-16));
     CHECK_THROWS( solve(2*(x^2)==-100));
@@ -81,12 +78,6 @@ TEST_CASE("CHECK_THROWS"){
     CHECK_THROWS(solve(2*(x^2)==-7));
     CHECK_THROWS(solve((x^2)==-9));
     CHECK_THROWS(solve((x^2)==-12));
-    CHECK_THROWS(solve((x^3)==-12));
-    CHECK_THROWS(solve((x^4)==16));
-    CHECK_THROWS(solve((x^4)==-16));
-    CHECK_THROWS(solve((x^-2)==-16));
-    CHECK_THROWS(solve(((x^4)+3*x+5)==100));
-    CHECK_THROWS(solve(((x^3)+3*x+2)==100));
 
 }
 TEST_CASE("test ComplexVariable"){
@@ -94,7 +85,6 @@ TEST_CASE("test ComplexVariable"){
     ComplexVariable y;
     CHECK(solve(2*y-4 == 10)==std::complex<double>(7,0));
     CHECK(solve(y-4 == 10)==std::complex<double>(14,0));
-   // CHECK(solve(y == 10)==std::complex<double>(10,0));
     CHECK((solve((y^2) == 16)==std::complex<double>(4,0)||solve((y^2) == 16)==std::complex<double>(-4,0)));
     CHECK((solve((y^2) == -16)==std::complex<double>(0,4)||solve((y^2) == -16)==std::complex<double>(0,-4)));
     CHECK((solve((y^2) + 2*y + 4 == 20 + 6*y/2 - y)==std::complex<double>(4,0)||solve((y^2) + 2*y + 4 == 20 + 6*y/2 - y)==std::complex<double>(-4,0))); //(-4,0)
@@ -121,19 +111,5 @@ TEST_CASE("test ComplexVariable"){
 }
 TEST_CASE("CHECK_THROWS ComplexVariable ") {
     ComplexVariable y;
-    CHECK_THROWS(solve((y ^ 3)==-16));
-    CHECK_THROWS(solve((y ^ 3)+5==200));
     CHECK_THROWS(solve((y ^ 0)==-16));
-    CHECK_THROWS(solve((y ^ 3) == 100));
-    CHECK_THROWS(solve((y ^ 4) == 16));
-    CHECK_THROWS(solve((y ^ 4) == -16));
-    CHECK_THROWS(solve(2*(y ^ 4)+10 == -16));
-    CHECK_THROWS(solve(2*(y ^ -2) == -200));
-    CHECK_THROWS(solve((y ^ -2) == -16));
-    CHECK_THROWS(solve((y^5)+2==18));
-    CHECK_THROWS(solve((y ^ 8)==-16));
-    CHECK_THROWS(solve((y ^ 9)==-16));
-
-
-
 }
