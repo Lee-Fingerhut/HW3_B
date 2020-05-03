@@ -61,11 +61,18 @@ complex<double> solver::solve(const ComplexVariable& x){
         throw mexnotreal;
     }
     if(x.quad == std::complex<double>(0.0,0.0) && x.linear != std::complex<double>(0.0,0.0)){
+        complex<double> f =(std::complex<double>(-1.0,0.0) * x.number )/x.linear;
+        float re = std::round(f.real()*10000)/10000;
+        float im = std::round(f.imag()*10000)/10000;
+        return std::complex<double>(re,im) ;
         
-        return ((std::complex<double>(-1.0,0.0) * x.number )/x.linear);
+        // return ((std::complex<double>(-1.0,0.0) * x.number )/x.linear);
     }
     complex<double> delta = (x.linear * x.linear - std::complex<double>(4.0,0.0) * x.quad  * x.number);
-    return (std::complex<double>(-1.0,0.0) * x.linear + sqrt(delta))/(std::complex<double>(2.0,0.0) * x.quad);
+    complex<double> t = (std::complex<double>(-1.0,0.0) * x.linear + sqrt(delta))/(std::complex<double>(2.0,0.0) * x.quad);
+    float re = std::round(t.real()*10000)/10000;
+    float im = std::round(t.imag()*10000)/10000;
+    return std::complex<double>(re,im) ;
 }
 
 //************************* + *******************************
